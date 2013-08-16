@@ -176,13 +176,6 @@ module Bosh::Dev
 
         subject.sync_buckets
       end
-
-      it 'syncs the micro bosh stemcells' do
-        Rake::FileUtilsExt.should_receive(:sh).
-          with('s3cmd --verbose sync s3://bosh-ci-pipeline/123/micro-bosh-stemcell s3://bosh-jenkins-artifacts')
-
-        subject.sync_buckets
-      end
     end
 
     describe '#update_light_micro_bosh_ami_pointer_file' do
