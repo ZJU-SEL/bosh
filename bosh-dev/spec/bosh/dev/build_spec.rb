@@ -178,7 +178,7 @@ module Bosh::Dev
       end
     end
 
-    describe '#update_light_micro_bosh_ami_pointer_file' do
+    describe '#update_light_bosh_ami_pointer_file' do
       let(:fake_stemcell_filename) { 'FAKE_STEMCELL_FILENAME' }
       let(:fake_stemcell) { instance_double('Bosh::Stemcell::Stemcell') }
       let(:infrastructure) { instance_double('Bosh::Stemcell::Infrastructure::Base', name: 'aws') }
@@ -192,41 +192,41 @@ module Bosh::Dev
         fake_stemcell.stub(ami_id: 'FAKE_AMI_ID')
         Bosh::Stemcell::Stemcell.stub(new: fake_stemcell)
 
-        stub_request(:get, 'http://bosh-ci-pipeline.s3.amazonaws.com/123/micro-bosh-stemcell/aws/FAKE_STEMCELL_FILENAME')
+        stub_request(:get, 'http://bosh-ci-pipeline.s3.amazonaws.com/123/bosh-stemcell/aws/FAKE_STEMCELL_FILENAME')
       end
 
-      it 'downloads the aws micro-bosh-stemcell for the current build' do
+      it 'downloads the aws bosh-stemcell for the current build' do
         subject.should_receive(:download_stemcell).
-          with(infrastructure: infrastructure, name: 'micro-bosh-stemcell', light: true)
+          with(infrastructure: infrastructure, name: 'bosh-stemcell', light: true)
 
-        subject.update_light_micro_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
+        subject.update_light_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
       end
 
       it 'initializes a Stemcell with the downloaded stemcell filename' do
         Bosh::Stemcell::ArchiveFilename.should_receive(:new).
-          with('123', infrastructure, 'micro-bosh-stemcell', true).and_return(archive_filename)
+          with('123', infrastructure, 'bosh-stemcell', true).and_return(archive_filename)
 
         Bosh::Stemcell::Stemcell.should_receive(:new).with(fake_stemcell_filename)
 
-        subject.update_light_micro_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
+        subject.update_light_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
       end
 
       it 'updates the S3 object with the AMI ID from the stemcell.MF' do
         fake_stemcell.stub(ami_id: 'FAKE_AMI_ID')
 
-        subject.update_light_micro_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
+        subject.update_light_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
 
         expect(fog_storage.
                  directories.get('bosh-jenkins-artifacts').
-                 files.get('last_successful_micro-bosh-stemcell-aws_ami_us-east-1').body).to eq('FAKE_AMI_ID')
+                 files.get('last_successful-bosh-stemcell-aws_ami_us-east-1').body).to eq('FAKE_AMI_ID')
       end
 
       it 'is publicly reachable' do
-        subject.update_light_micro_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
+        subject.update_light_bosh_ami_pointer_file(access_key_id: access_key_id, secret_access_key: secret_access_key)
 
         expect(fog_storage.
                  directories.get('bosh-jenkins-artifacts').
-                 files.get('last_successful_micro-bosh-stemcell-aws_ami_us-east-1').public_url).to_not be_nil
+                 files.get('last_successful-bosh-stemcell-aws_ami_us-east-1').public_url).to_not be_nil
       end
     end
 

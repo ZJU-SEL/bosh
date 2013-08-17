@@ -103,10 +103,10 @@ module Bosh::Dev
       end
     end
 
-    def update_light_micro_bosh_ami_pointer_file(aws_credentials)
+    def update_light_bosh_ami_pointer_file(aws_credentials)
       connection = fog_storage(aws_credentials[:access_key_id], aws_credentials[:secret_access_key])
       directory = connection.directories.create(key: 'bosh-jenkins-artifacts')
-      directory.files.create(key: 'last_successful_micro-bosh-stemcell-aws_ami_us-east-1',
+      directory.files.create(key: 'last_successful-bosh-stemcell-aws_ami_us-east-1',
                              body: light_stemcell.ami_id,
                              acl: 'public-read')
     end
@@ -143,8 +143,8 @@ module Bosh::Dev
 
     def light_stemcell
       infrastructure = Bosh::Stemcell::Infrastructure.for('aws')
-      download_stemcell(infrastructure: infrastructure, name: 'micro-bosh-stemcell', light: true)
-      filename = stemcell_filename(number.to_s, infrastructure, 'micro-bosh-stemcell', true)
+      download_stemcell(infrastructure: infrastructure, name: 'bosh-stemcell', light: true)
+      filename = stemcell_filename(number.to_s, infrastructure, 'bosh-stemcell', true)
       Bosh::Stemcell::Stemcell.new(filename)
     end
 
