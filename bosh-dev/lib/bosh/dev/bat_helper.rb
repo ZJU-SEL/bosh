@@ -5,8 +5,9 @@ module Bosh::Dev
   class BatHelper
     attr_reader :infrastructure
 
-    def initialize(infrastructure, build = Build.candidate)
+    def initialize(infrastructure, network_type = nil, build = Build.candidate)
       @infrastructure = Bosh::Stemcell::Infrastructure.for(infrastructure)
+      @network_type = network_type
       @build = build
     end
 
@@ -35,12 +36,16 @@ module Bosh::Dev
 
       fetch_stemcells
 
-      Rake::Task["spec:system:#{infrastructure.name}:micro"].invoke
+      if (infrastructure.name == 'openstack' && network_type)
+        Rake::Task["spec:system:#{infrastructure.name}:deploy_micro_#{network_type}_net"].invoke
+      else
+        Rake::Task["spec:system:#{infrastructure.name}:micro"].invoke
+      end
     end
 
     private
 
-    attr_reader :build
+    attr_reader :build, :network_type
 
     def infrastructure_for_emitable_example
       ENV['BAT_INFRASTRUCTURE'] = infrastructure.name

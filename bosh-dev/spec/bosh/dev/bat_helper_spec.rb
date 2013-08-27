@@ -9,8 +9,9 @@ module Bosh::Dev
     let(:fake_infrastructure) { instance_double('Bosh::Stemcell::Infrastructure::Base', name: infrastructure_name, light?: light) }
     let(:light) { false }
     let(:build) { instance_double('Bosh::Dev::Build', download_stemcell: nil) }
+    let(:network_type) { nil }
 
-    subject { BatHelper.new(infrastructure_name, build) }
+    subject { BatHelper.new(infrastructure_name, network_type, build) }
 
     before do
       Bosh::Stemcell::Infrastructure.should_receive(:for).and_return(fake_infrastructure)
@@ -24,10 +25,11 @@ module Bosh::Dev
 
     describe '#run_rake' do
       let(:spec_system_micro_task) { instance_double('Rake::Task', invoke: nil) }
+      let(:rake_task_to_invoke) { "spec:system:#{infrastructure_name}:micro" }
 
       before do
         ENV.delete('BAT_INFRASTRUCTURE')
-        Rake::Task.stub(:[]).with("spec:system:#{infrastructure_name}:micro").and_return(spec_system_micro_task)
+        Rake::Task.stub(:[]).with(rake_task_to_invoke).and_return(spec_system_micro_task)
 
         FileUtils.stub(rm_rf: nil, mkdir_p: nil)
       end
@@ -42,7 +44,7 @@ module Bosh::Dev
         subject.run_rake
       end
 
-      it 'creates the microbosh depolyments dir (which is contained within artifacts dir)' do
+      it 'creates the microbosh deployments dir (which is contained within artifacts dir)' do
         FileUtils.should_receive(:mkdir_p).with(subject.micro_bosh_deployment_dir)
 
         subject.run_rake
@@ -66,6 +68,43 @@ module Bosh::Dev
         spec_system_micro_task.should_receive(:invoke)
 
         subject.run_rake
+      end
+
+      context 'deploying to openstack' do
+        let(:infrastructure_name) { 'openstack' }
+
+        context 'manual network type' do
+          let(:rake_task_to_invoke) { "spec:system:#{infrastructure_name}:deploy_micro_manual_net" }
+          let(:network_type) { 'manual' }
+
+          it 'invokes the spec:system:openstack:deploy_micro_manual_net rake task' do
+            spec_system_micro_task.should_receive(:invoke)
+
+            subject.run_rake
+          end
+        end
+
+        context 'dynamic network type' do
+          let(:rake_task_to_invoke) { "spec:system:#{infrastructure_name}:deploy_micro_dynamic_net" }
+          let(:network_type) { 'dynamic' }
+
+          it 'invokes the spec:system:openstack:deploy_micro_dynamic_net rake task' do
+            spec_system_micro_task.should_receive(:invoke)
+
+            subject.run_rake
+          end
+        end
+
+        context 'no network type is passed' do
+          let(:rake_task_to_invoke) { "spec:system:#{infrastructure_name}:micro" }
+          let(:network_type) { nil }
+
+          it 'invokes the spec:system:openstack:micro rake task' do
+            spec_system_micro_task.should_receive(:invoke)
+
+            subject.run_rake
+          end
+        end
       end
     end
 
