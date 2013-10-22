@@ -1,5 +1,39 @@
 # BOSH [![Build Status](https://travis-ci.org/cloudfoundry/bosh.png?branch=master)](https://travis-ci.org/cloudfoundry/bosh) [![Code Climate](https://codeclimate.com/github/cloudfoundry/bosh.png)](https://codeclimate.com/github/cloudfoundry/bosh)
 
+# Using Cloud Foundry with Cloud Stack by CPI
+
+This is the alpha release of BOSH with Cloud Stack CPI supported. This project is owned by SEL (Software Engineering Lab) of ZJU.
+
+Branchs:
+- master: exactly same with Cloud Foundry BOSH
+- zjudev: the main branch of our project
+
+Cloud Stack Stemcell:
+- see:  [https://github.com/ZJU-SEL/bosh_cloudstack_stemcell](http://github.com/ZJU-SEL/bosh_cloudstack_stemcell/)
+
+The Cloud Stack CPI has been well tested on:
+- Cloud Stack 4.0
+- cf-release 128.0
+- BOSH stuff 1.5.0-pre2
+
+Besides the CPI part, we did some modifiy in:
+
+bosh/bosh_agent/lib/bosh_agent/infrastructure/cloudstack
+bosh/bosh_cloudstack_registry
+bosh/bosh_deployer/lib/deployer/instance_manager/cloudstack.rb
+
+And we also added a lot of features to "fog", see:  [http://github.com/ZJU-SEL/fog/](http://github.com/ZJU-SEL/fog/)
+
+NOTE: You have to use our own fog version for now (by pre-install our fog in your gem env and re-config Gemfile), but we'll solve this problem in next step soon.
+
+
+#TODO
+Our next step will be:
+- merge part of the code to Cloud Foundry BOSH by sending PR
+- commit our fog to https://github.com/fog/fog by sending PR
+
+Be free to enjoy it!
+
 Cloud Foundry BOSH is an open source tool chain for release engineering, deployment and lifecycle management of large scale distributed services. In this manual we describe the architecture, topology, configuration, and use of BOSH, as well as the structure and conventions used in packaging and deployment.
 
 * BOSH Documentation: [http://cloudfoundry.github.com/docs/running/deploying-cf/](http://cloudfoundry.github.com/docs/running/deploying-cf/)
