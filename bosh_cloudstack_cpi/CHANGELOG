@@ -11,7 +11,7 @@
 * Fix create_stemcell
 * Upgrade fog gem to version 1.5.0
 * Remove files from git (.gitignore)
-* Add glance to BOSH OpenStack CPI console
+* Add glance to BOSH CloudStack CPI console
 * Added a new method to upload images
 * Add support to kernel_file and ramdisk_file stemcell options
 * Delete kernel and ramdisk when deleting the stemcell

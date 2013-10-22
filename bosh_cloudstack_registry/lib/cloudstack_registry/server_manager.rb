@@ -26,7 +26,7 @@ module Bosh::CloudstackRegistry
 
     ##
     # Reads server settings
-    # @param [String] server_id OpenStack server id
+    # @param [String] server_id CloudStack server id
     def read_settings(server_id)
       get_server(server_id).settings
     end

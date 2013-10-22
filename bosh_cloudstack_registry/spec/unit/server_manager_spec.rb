@@ -2,21 +2,21 @@
 
 require File.expand_path("../../spec_helper", __FILE__)
 
-describe Bosh::OpenstackRegistry::ServerManager do
+describe Bosh::CloudstackRegistry::ServerManager do
 
   before(:each) do
-    openstack = double(Fog::Compute)
-    Fog::Compute.stub(:new).and_return(openstack)
-    @openstack = mock("openstack")
-    Bosh::OpenstackRegistry.openstack = @openstack
+    cloudstack = double(Fog::Compute)
+    Fog::Compute.stub(:new).and_return(cloudstack)
+    @cloudstack = mock("cloudstack")
+    Bosh::CloudstackRegistry.cloudstack = @cloudstack
   end
 
   let(:manager) do
-    Bosh::OpenstackRegistry::ServerManager.new
+    Bosh::CloudstackRegistry::ServerManager.new
   end
 
   def create_server(params)
-    Bosh::OpenstackRegistry::Models::OpenstackServer.create(params)
+    Bosh::CloudstackRegistry::Models::CloudstackServer.create(params)
   end
 
   describe "reading settings" do
@@ -28,7 +28,7 @@ describe Bosh::OpenstackRegistry::ServerManager do
     it "raises an error if server not found" do
       expect {
         manager.read_settings("foo")
-      }.to raise_error(Bosh::OpenstackRegistry::ServerNotFound,
+      }.to raise_error(Bosh::CloudstackRegistry::ServerNotFound,
                        "Can't find server `foo'")
     end
   end
@@ -54,14 +54,14 @@ describe Bosh::OpenstackRegistry::ServerManager do
 
       expect {
         manager.read_settings("foo")
-      }.to raise_error(Bosh::OpenstackRegistry::ServerNotFound,
+      }.to raise_error(Bosh::CloudstackRegistry::ServerNotFound,
                        "Can't find server `foo'")
     end
 
     it "raises an error if server not found" do
       expect {
         manager.delete_settings("foo")
-      }.to raise_error(Bosh::OpenstackRegistry::ServerNotFound,
+      }.to raise_error(Bosh::CloudstackRegistry::ServerNotFound,
                        "Can't find server `foo'")
     end
   end

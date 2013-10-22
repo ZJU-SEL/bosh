@@ -2,13 +2,17 @@
 # =========
 #
 # This is a reasonably complete list of everyone who has committed
-# code to the OpenStack BOSH CPI project. The list is just ordered by first
+# code to the ClodStack BOSH CPI project. The list is just ordered by first
 # name here, but the file is (and should be kept) YAML-formatted.
 #
 # Please feel free to add any personal details.
 
 ---
+- Alex Jiang            { email: jiangqi902@zju.edu.cn, company: "ZJU SEL"}
+- Alan Sun              { email: alan90121@gmail.com, company: "ZJU SEL"}
 - Ferran Rodenas        { email: frodenas@gmail.com, company: "VMware Inc." }
+- Harry Zhang           { email: resouer@zju.edu.cn, company: "ZJU SEL"}
+- Haodong Chen          { email: 21151073@zju.edu.cn, company: "ZJU SEL"}
 - Igor Bolotin          { company: "X.commerce" }
 - Jeff Lindsay          { email: progrium@gmail.com }
 - Josh Kearney          { email: josh@jk0.org, company: "Piston Cloud Computing" }

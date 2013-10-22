@@ -30,7 +30,7 @@ module Bosh::CloudStackCloud
 
     ##
     # Update server settings in the registry
-    # @param [String] server_id OpenStack server id
+    # @param [String] server_id CloudStack server id
     # @param [Hash] settings New agent settings
     # @return [Boolean]
     def update_settings(server_id, settings)
@@ -54,7 +54,7 @@ module Bosh::CloudStackCloud
 
     ##
     # Read server settings from the registry
-    # @param [String] server_id OpenStack server id
+    # @param [String] server_id CloudStack server id
     # @return [Hash] Agent settings
     def read_settings(server_id)
       url = "#{@endpoint}/servers/#{server_id}/settings"
@@ -89,7 +89,7 @@ module Bosh::CloudStackCloud
 
     ##
     # Delete server settings from the registry
-    # @param [String] server_id OpenStack server id
+    # @param [String] server_id CloudStack server id
     # @return [Boolean]
     def delete_settings(server_id)
       url = "#{@endpoint}/servers/#{server_id}/settings"

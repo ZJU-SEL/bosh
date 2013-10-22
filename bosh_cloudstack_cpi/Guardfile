@@ -11,7 +11,7 @@ group :unit_tests do
     watch("spec/spec_helper.rb")             { "spec/unit" }
     watch("cloudstack.rb")                    { "spec/unit" }
     watch(%r{^spec/unit/.+_spec\.rb})
-    watch(%r{^lib/cloud/openstack/(.+)\.rb}) { |m| "spec/unit/#{m[1]}_spec.rb" }
+    watch(%r{^lib/cloud/cloudstack/(.+)\.rb}) { |m| "spec/unit/#{m[1]}_spec.rb" }
   end
 end
 

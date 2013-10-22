@@ -7,5 +7,5 @@
 
 * verify IP if no auth credentials are provided
 * added basic documentation
-* added OpenStack regions support
+* added CloudStack regions support
 * fixed EM error handling

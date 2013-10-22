@@ -95,29 +95,29 @@ describe Bosh::CloudStackCloud::Cloud do
     server = double("server", :id => "i-test", :name => "i-test")
 
     expect {
-      cloud = mock_cloud do |openstack|
-        openstack.servers.should_receive(:get).with("i-test").and_return(server)
+      cloud = mock_cloud do |cloudstack|
+        cloudstack.servers.should_receive(:get).with("i-test").and_return(server)
       end
       cloud.configure_networks("i-test", "net_a" => vip_network_spec)
     }.to raise_error(Bosh::Clouds::CloudError, "At least one dynamic network should be defined")
 
     expect {
-      cloud = mock_cloud do |openstack|
-        openstack.servers.should_receive(:get).with("i-test").and_return(server)
+      cloud = mock_cloud do |cloudstack|
+        cloudstack.servers.should_receive(:get).with("i-test").and_return(server)
       end
       cloud.configure_networks("i-test", "net_a" => vip_network_spec, "net_b" => vip_network_spec)
     }.to raise_error(Bosh::Clouds::CloudError, /More than one vip network/)
 
     expect {
-      cloud = mock_cloud do |openstack|
-        openstack.servers.should_receive(:get).with("i-test").and_return(server)
+      cloud = mock_cloud do |cloudstack|
+        cloudstack.servers.should_receive(:get).with("i-test").and_return(server)
       end
       cloud.configure_networks("i-test", "net_a" => dynamic_network_spec, "net_b" => dynamic_network_spec)
     }.to raise_error(Bosh::Clouds::CloudError, /More than one dynamic network/)
 
     expect {
-      cloud = mock_cloud do |openstack|
-        openstack.servers.should_receive(:get).with("i-test").and_return(server)
+      cloud = mock_cloud do |cloudstack|
+        cloudstack.servers.should_receive(:get).with("i-test").and_return(server)
       end
       cloud.configure_networks("i-test", "net_a" => { "type" => "foo" })
     }.to raise_error(Bosh::Clouds::CloudError, /Invalid network type `foo'/)

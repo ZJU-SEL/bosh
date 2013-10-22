@@ -25,7 +25,7 @@ module SpecHelper
       configure_logging
       configure_temp_dir
 
-      require "openstack_registry"
+      require "cloudstack_registry"
       init_database
     end
 
@@ -54,7 +54,7 @@ module SpecHelper
 
       @db = Sequel.sqlite(:database => nil, :max_connections => 32, :pool_timeout => 10)
       @db.loggers << @logger
-      Bosh::OpenstackRegistry.db = @db
+      Bosh::CloudstackRegistry.db = @db
 
       run_migrations
     end
@@ -75,8 +75,8 @@ module SpecHelper
       reset_database
       run_migrations
 
-      Bosh::OpenstackRegistry.db = @db
-      Bosh::OpenstackRegistry.logger = @logger
+      Bosh::CloudstackRegistry.db = @db
+      Bosh::CloudstackRegistry.logger = @logger
     end
   end
 end
@@ -97,7 +97,7 @@ def valid_config
       "pool_timeout" => 227,
       "database" => "sqlite:///:memory:"
     },
-    "openstack" => {
+    "cloudstack" => {
       "auth_url" => "http://127.0.0.1:5000/v2.0/tokens",
       "username" => "foo",
       "api_key" => "bar",
@@ -109,6 +109,6 @@ end
 RSpec.configure do |rspec|
   rspec.before(:each) do
     SpecHelper.reset
-    Bosh::OpenstackRegistry.logger = Logger.new(StringIO.new)
+    Bosh::CloudstackRegistry.logger = Logger.new(StringIO.new)
   end
 end

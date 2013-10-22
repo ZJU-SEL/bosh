@@ -17,7 +17,7 @@ class CloudStackConfig
 end
 
 os_config = CloudStackConfig.new
-os_config.db = nil # OpenStack CPI doesn't need DB
+os_config.db = nil # CloudStack CPI doesn't need DB
 os_config.logger = Logger.new(StringIO.new)
 os_config.logger.level = Logger::DEBUG
 
