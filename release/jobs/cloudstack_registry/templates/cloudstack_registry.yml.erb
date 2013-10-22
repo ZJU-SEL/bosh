@@ -1,0 +1,27 @@
+---
+loglevel: debug
+
+http:
+  port: <%= properties.cloudstack_registry.http.port %>
+  user: <%= properties.cloudstack_registry.http.user %>
+  password: <%= properties.cloudstack_registry.http.password %>
+
+db:
+  <% if properties.postgres %>
+  <% user     = properties.postgres.user %>
+  <% pass     = properties.postgres.password %>
+  <% address  = properties.postgres.address %>
+  <% database = properties.postgres.database %>
+  database: postgres://<%= user %>:<%= pass %>@<%= address %>/<%= database %>
+  <% else %>
+  database: sqlite:///var/vcap/store/director/director.db %>
+  <% end %>
+  max_connections: 32
+  pool_timeout: 10
+
+cloudstack:
+  host: <%= properties.cloudstack.host %>
+  port: <%= properties.cloudstack.port %>
+  scheme: <%= properties.cloudstack.scheme %>
+  api_key: <%= properties.cloudstack.api_key %>
+  secret_access_key: <%= properties.cloudstack.secret_access_key %>

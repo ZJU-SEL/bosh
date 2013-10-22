@@ -1,0 +1,5 @@
+check process cloudstack_registry
+  with pidfile /var/vcap/sys/run/cloudstack_registry/cloudstack_registry.pid
+  start program "/var/vcap/jobs/cloudstack_registry/bin/cloudstack_registry_ctl start"
+  stop program "/var/vcap/jobs/cloudstack_registry/bin/cloudstack_registry_ctl stop"
+  group vcap

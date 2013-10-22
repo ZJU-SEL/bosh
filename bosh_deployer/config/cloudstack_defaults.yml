@@ -1,0 +1,54 @@
+---
+name:
+
+logging:
+  level: INFO
+
+dir:
+
+network:
+  type: dynamic
+  label: private
+  cloud_properties: {}
+
+env:
+  bosh:
+    password:
+
+resources:
+  persistent_disk: 4096
+  cloud_properties:
+    instance_type: m1.small
+    availability_zone:
+
+cloud:
+  plugin: cloudstack
+  properties:
+    cloudstack:
+      host:
+      port:
+      scheme:
+      api_key:
+      secret_access_key:
+      default_security_groups: []
+      default_zone: 
+    registry:
+      endpoint: http://admin:admin@localhost:25889
+      user: admin
+      password: admin
+    stemcell:
+      kernel_id:
+      disk: 4096
+    agent:
+      ntp: []
+      blobstore:
+        plugin: local
+        properties:
+          blobstore_path: /var/vcap/micro_bosh/data/cache
+      mbus:
+
+apply_spec:
+  properties: {}
+  agent:
+    blobstore: {}
+    nats: {}

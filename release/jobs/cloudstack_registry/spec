@@ -1,0 +1,47 @@
+---
+name: cloudstack_registry
+
+templates:
+  cloudstack_registry_ctl:     bin/cloudstack_registry_ctl
+  cloudstack_registry.yml.erb: config/cloudstack_registry.yml
+
+packages:
+  - cloudstack_registry
+  - libpq
+  - ruby
+
+properties:
+  cloudstack_registry.http.port:
+    description: TCP port cloudstack Registry daemon listens on
+    default: 25777
+  cloudstack_registry.http.user:
+    description: Username clients must use to access cloudstack Registry via HTTP Basic Auth
+  cloudstack_registry.http.password:
+    description: Password clients must use to access cloudstack Registry via HTTP Basic Auth
+
+  cloudstack_registry.db.max_connections:
+    description: Maximum size of the connection pool
+    default: 32
+  cloudstack_registry.db.pool_timeout:
+    description: Number of seconds to wait if a connection cannot be acquired before raising an error
+    default: 10
+
+  postgres.user:
+    description: User for the Postgres database connection (optional, if not set registry will use a sqlite database)
+  postgres.password:
+    description: Password for the Postgres database connection (optional, if not set registry will use a sqlite database)
+  postgres.address:
+    description: Address of the Postgres database connection (optional, if not set registry will use a sqlite database)
+  postgres.database:
+    description: Database for the Postgres database connection (optional, if not set registry will use a sqlite database)
+
+  cloudstack.host:
+    description: 
+  cloudstack.port:
+    description: 
+  cloudstack.scheme:
+    description: 
+  cloudstack.api_key:
+    description: 
+  cloudstack.secret_access_key:
+    description: 

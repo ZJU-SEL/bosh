@@ -1,0 +1,7 @@
+---
+name: cloudstack_registry
+dependencies:
+- libpq
+- ruby
+files:
+- bosh/bosh_cloudstack_registry/*.gem
