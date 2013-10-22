@@ -38,20 +38,20 @@ server properties:
   Number of seconds to wait if a connection cannot be acquired before
   raising an error
 
-### OpenStack options
+### CloudStack options
 
-These are the credentials to connect to OpenStack services:
+These are the credentials to connect to CloudStack services:
 
 * `auth_url` (required)
-  URL of the OpenStack Identity endpoint to connect to
+  URL of the CloudStack Identity endpoint to connect to
 * `username` (required)
-  OpenStack user name
+  CloudStack user name
 * `api_key` (required)
-  OpenStack API key
+  CloudStack API key
 * `tenant` (required)
-  OpenStack tenant name
+  CloudStack tenant name
 * `region` (optional)
-  OpenStack region
+  CloudStack region
 
 ## Example
 
