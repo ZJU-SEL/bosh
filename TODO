@@ -1,0 +1,6 @@
+#Need to send PR：
+bosh/bosh_agent/lib/bosh_agent/infrastructure all the cloudstack stuff
+bosh/bosh_deployer/lib/deployer/instance_manager/cloudstack.rb
+
+#Stay local
+bosh/bosh_cloudstack_registry code and version
