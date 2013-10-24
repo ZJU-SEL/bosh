@@ -13,7 +13,7 @@ Cloud Stack Stemcell:
 
 The Cloud Stack CPI has been well tested on:
 - Cloud Stack 4.0
-- cf-release 128.0
+- cf-release 128.1
 - BOSH stuff 1.5.0-pre2
 
 Besides the CPI part, we did some modifiy in:
