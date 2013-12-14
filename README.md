@@ -1,5 +1,15 @@
 # BOSH [![Build Status](https://travis-ci.org/cloudfoundry/bosh.png?branch=master)](https://travis-ci.org/cloudfoundry/bosh) [![Code Climate](https://codeclimate.com/github/cloudfoundry/bosh.png)](https://codeclimate.com/github/cloudfoundry/bosh)
 
+# NOTE
+
+We are now working with NTT guys to co-develop the new version of BOSH CloudStack CPI, see:
+[https://github.com/cloudfoundry-community/bosh-cloudstack-cpi](https://github.com/cloudfoundry-community/bosh-cloudstack-cpi)
+
+So the newest code of CPI has been moved to that repo!
+
+But if you want to try the old version of CPI from ZJU-SEL, be free to checkout the stable zju-dev branch.
+The old version of CPI is more like OpenStack CPI style while the new co-operated version is like AWS style. 
+
 # Using Cloud Foundry with Cloud Stack by CPI
 
 This is the alpha release of BOSH with Cloud Stack CPI supported. This project is owned by SEL (Software Engineering Lab) of ZJU.
