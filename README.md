@@ -8,7 +8,7 @@ We are now working with NTT guys to co-develop the new version of BOSH CloudStac
 So the newest code of CPI has been moved to that repo!
 
 But if you want to try the old version of CPI from ZJU-SEL, be free to checkout the stable zju-dev branch.
-The old version of CPI is more like OpenStack CPI style while the new co-operated version is like AWS style. 
+The old version of CPI is more like OpenStack CPI style while the new co-operated version is like AWS style. The more detailed diff is in this wiki: [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations] (https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations)
 
 # Using Cloud Foundry with Cloud Stack by CPI
 
