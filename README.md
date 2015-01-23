@@ -1,6 +1,6 @@
 # BOSH [![Build Status](https://travis-ci.org/cloudfoundry/bosh.png?branch=master)](https://travis-ci.org/cloudfoundry/bosh) [![Code Climate](https://codeclimate.com/github/cloudfoundry/bosh.png)](https://codeclimate.com/github/cloudfoundry/bosh)
 
-# NOT
+# NOTE
 
 BOSH CloudStack CPI has been adopted as **official Cloud Foundry Community project** and moved to the repo below:
 [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi](https://github.com/cloudfoundry-community/bosh-cloudstack-cpi)
