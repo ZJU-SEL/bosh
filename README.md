@@ -1,13 +1,13 @@
 # BOSH [![Build Status](https://travis-ci.org/cloudfoundry/bosh.png?branch=master)](https://travis-ci.org/cloudfoundry/bosh) [![Code Climate](https://codeclimate.com/github/cloudfoundry/bosh.png)](https://codeclimate.com/github/cloudfoundry/bosh)
 
-# NOTE
+# NOT
 
-BOSH CloudStack CPI has been adopted as official Cloud Foundry Community project and moved to the repo below:
+BOSH CloudStack CPI has been adopted as **official Cloud Foundry Community project** and moved to the repo below:
 [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi](https://github.com/cloudfoundry-community/bosh-cloudstack-cpi)
 
-The Annocement: [Pivotal: ZJU & NTT co-released the BOSH CloudStack CPI](http://blog.pivotal.io/cloud-foundry-pivotal/products/bosh-cpi-support-for-cloudstack)
+The **Annocement**: [Pivotal: ZJU & NTT co-released the BOSH CloudStack CPI](http://blog.pivotal.io/cloud-foundry-pivotal/products/bosh-cpi-support-for-cloudstack)
 
-But if you want to try the old version of CPI from ZJU-SEL, be free to checkout the stable zju-dev branch.
+But if you want to try the **old version** of CPI from ZJU-SEL, be free to checkout the stable zju-dev branch.
 The old version of CPI is more like OpenStack CPI style while the new co-operated version is like AWS style. The more detailed diff is in this wiki: [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations] (https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations)
 
 # Using Cloud Foundry with Cloud Stack by CPI
