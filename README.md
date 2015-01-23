@@ -2,10 +2,10 @@
 
 # NOTE
 
-We are now working with NTT guys to co-develop the new version of BOSH CloudStack CPI, see:
+BOSH CloudStack CPI has been adopted as official Cloud Foundry Community project and moved to the repo below:
 [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi](https://github.com/cloudfoundry-community/bosh-cloudstack-cpi)
 
-So the newest code of CPI has been moved to that repo!
+The Annocement: [Pivotal: ZJU & NTT co-released the BOSH CloudStack CPI](http://blog.pivotal.io/cloud-foundry-pivotal/products/bosh-cpi-support-for-cloudstack)
 
 But if you want to try the old version of CPI from ZJU-SEL, be free to checkout the stable zju-dev branch.
 The old version of CPI is more like OpenStack CPI style while the new co-operated version is like AWS style. The more detailed diff is in this wiki: [https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations] (https://github.com/cloudfoundry-community/bosh-cloudstack-cpi/wiki/Difference-between-ZJU-SEL-and-NTT-implementations)
